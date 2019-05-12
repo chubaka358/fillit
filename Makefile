@@ -5,12 +5,15 @@ FUNC_O = $(FUNC:.c=.o)
 EXEC = fillit
 
 all:
-	clang $(FLAGS) -I $(LIB) -L $(LIB) -lft $(FUNC) -o $(EXEC)
+	@gcc -c $(FLAGS) $(FUNC)
+	@gcc -I $(LIB) -L $(LIB) -lft $(FUNC_O) -o $(EXEC)
+
+$(EXEC): all
 
 clean:
-	/bin/rm -Rf $(FUNC_O)
+	@/bin/rm -Rf $(FUNC_O)
 
 fclean: clean
-	/bin/rm -Rf $(EXEC)
+	@/bin/rm -Rf $(EXEC)
 
 re: fclean all
