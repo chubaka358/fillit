@@ -1,21 +1,10 @@
-FLAGS = -g -Wall -Wextra -Werror
-LIB = libft/
-FUNC = fillit.c
-FUNC_O = $(FUNC:.c=.o)
-NAME = fillit
+CC=gcc
+CFLAGS=-g -Wall -Wextra -Werror
+DEPS=fillit.h
+OBJ=fillit.o
 
-all: $(NAME)
-	@gcc -c $(FLAGS) $(FUNC)
-	@gcc -I $(LIB) -L $(LIB) -lft $(FUNC_O) -o $(EXEC)
+%.o:%.c ßß$(DEPS)
+	$(СС) -c -o $@ $< $(CFLAGS)
 
-$(NAME): $(OBJ)
-	make -C libft
-	gcc -L ./libft -lft
-
-clean:
-	@/bin/rm -Rf $(FUNC_O)
-
-fclean: clean
-	@/bin/rm -Rf $(EXEC)
-
-re: fclean all
+fillit: $(OBJ)
+	$(CC) -o $@ $^ $(CFLAGS) -L libft -lft
