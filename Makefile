@@ -3,6 +3,8 @@ CFLAGS=-g -Wall -Wextra -Werror
 DEPS=fillit.h
 OBJ=fillit.o
 
+all: $(OBJ) fillit
+
 %.o:%.c $(DEPS)
 	$(CC) -c -o $@ $< $(CFLAGS)
 
@@ -17,3 +19,5 @@ clean:
 fclean: clean
 	/bin/rm -f fillit
 	make fclean -C libft
+
+re: fclean all
