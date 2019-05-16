@@ -7,4 +7,6 @@
 # include <sys/types.h>
 # include <sys/uio.h>
 
+int		is_obs(char c1, char c2, char c3);
+
 #endif

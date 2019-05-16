@@ -1,7 +1,7 @@
 CC=gcc
 CFLAGS=-g -Wall -Wextra -Werror
 DEPS=fillit.h
-OBJ=fillit.o
+OBJ=fillit.o valid.o
 
 all: $(OBJ) fillit
 
