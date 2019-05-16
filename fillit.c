@@ -6,7 +6,7 @@
 /*   By: bshara <bshara@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/16 21:39:04 by bshara            #+#    #+#             */
-/*   Updated: 2019/05/16 22:19:07 by bshara           ###   ########.fr       */
+/*   Updated: 2019/05/16 22:29:41 by bshara           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,22 +19,22 @@ int		is_figure(char *s)
 	i = 0;
 	while (s[i] != '#')
 		i++;
-	if (((i + 15 < 20) && is_obs(s[i + 5], s[i + 10], s[i + 15])) || ((i + 3 \
+	if (((i + 15 < 19) && is_obs(s[i + 5], s[i + 10], s[i + 15])) || ((i + 3 \
 	< 20)&& is_obs(s[i + 1], s[i + 2], s[i + 3])))
 		return (1);
-	if ((i + 11 < 20) && ((is_obs(s[i + 1], s[i + 6], s[i + 11])) || (is_obs(s[\
+	if ((i + 11 < 19) && ((is_obs(s[i + 1], s[i + 6], s[i + 11])) || (is_obs(s[\
 	i + 5], s[i + 10], s[i + 11])) || (is_obs(s[i + 5], s[i + 6], s[i + 11]))))
 		return (1);
-	if ((i + 10 < 20) && ((is_obs(s[i + 5], s[i + 9], s[i + 10])) || (is_obs(s[\
+	if ((i + 10 < 19) && ((is_obs(s[i + 5], s[i + 9], s[i + 10])) || (is_obs(s[\
 	i + 1], s[i + 5], s[i + 10]))))
 		return (1);
-	if (((i + 9 < 20) && is_obs(s[i + 4], s[i + 5], s[i + 9])) || ((i + 6 < 20)\
+	if (((i + 9 < 19) && is_obs(s[i + 4], s[i + 5], s[i + 9])) || ((i + 6 < 20)\
 	 && is_obs(s[i + 1], s[i + 5], s[i + 6])))
 		return (1);
-	if ((i + 7 < 20) && ((is_obs(s[i + 5], s[i + 6], s[i + 7])) || (is_obs(s[i \
+	if ((i + 7 < 19) && ((is_obs(s[i + 5], s[i + 6], s[i + 7])) || (is_obs(s[i \
 	+ 1], s[i + 2], s[i + 7])) || is_obs(s[i + 1], s[i + 6], s[i + 7])))
 		return (1);
-	if ((i + 5 < 20) && (is_obs(s[i + 3], s[i + 4], s[i + 5]) || (is_obs(s[i + \
+	if ((i + 5 < 19) && (is_obs(s[i + 3], s[i + 4], s[i + 5]) || (is_obs(s[i + \
 	1], s[i + 2], s[i + 5])) || (is_obs(s[i + 1], s[i + 4], s[i + 5]))))
 		return (1);
 	return (0);
