@@ -6,77 +6,19 @@
 /*   By: bshara <bshara@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/16 21:39:04 by bshara            #+#    #+#             */
-/*   Updated: 2019/05/16 22:29:41 by bshara           ###   ########.fr       */
+/*   Updated: 2019/06/03 21:39:35 by bshara           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
+#include <stdio.h> //delete this
 
-int		is_figure(char *s)
+void	print_usage()
 {
-	int	i;
-
-	i = 0;
-	while (s[i] != '#')
-		i++;
-	if (((i + 15 < 19) && is_obs(s[i + 5], s[i + 10], s[i + 15])) || ((i + 3 \
-	< 20)&& is_obs(s[i + 1], s[i + 2], s[i + 3])))
-		return (1);
-	if ((i + 11 < 19) && ((is_obs(s[i + 1], s[i + 6], s[i + 11])) || (is_obs(s[\
-	i + 5], s[i + 10], s[i + 11])) || (is_obs(s[i + 5], s[i + 6], s[i + 11]))))
-		return (1);
-	if ((i + 10 < 19) && ((is_obs(s[i + 5], s[i + 9], s[i + 10])) || (is_obs(s[\
-	i + 1], s[i + 5], s[i + 10]))))
-		return (1);
-	if (((i + 9 < 19) && is_obs(s[i + 4], s[i + 5], s[i + 9])) || ((i + 6 < 20)\
-	 && is_obs(s[i + 1], s[i + 5], s[i + 6])))
-		return (1);
-	if ((i + 7 < 19) && ((is_obs(s[i + 5], s[i + 6], s[i + 7])) || (is_obs(s[i \
-	+ 1], s[i + 2], s[i + 7])) || is_obs(s[i + 1], s[i + 6], s[i + 7])))
-		return (1);
-	if ((i + 5 < 19) && (is_obs(s[i + 3], s[i + 4], s[i + 5]) || (is_obs(s[i + \
-	1], s[i + 2], s[i + 5])) || (is_obs(s[i + 1], s[i + 4], s[i + 5]))))
-		return (1);
-	return (0);
+	write(1, "usage: cp source_file\n", 22);
 }
 
-int     is_valid_figure(t_list *list)
-{
-	int is_found;
-
-	is_found = 0;
-    while (list != NULL)
-    {
-		if (!is_figure((char*)list->content))
-			return (0);
-		list = list->next;
-    }
-	return (1);
-}
-
-int     is_buf_valid(char *BUF)
-{
-    int     i;
-	int		obstacle;
-
-    i = 0;
-	obstacle = 0;
-    while (i < 20)
-    {
-        if ((i % 5 == 4) && BUF[i] != '\n')
-            return (0);
-        else if ((i % 5 != 4) && BUF[i] != '.' && BUF[i] != '#')
-            return (0);
-		if (BUF[i] == '#')
-			obstacle++;
-        i++;
-    }
-	if (obstacle != 4)
-		return (0);
-    return (1);
-}
-
-int     is_valid(int fd)
+t_list     *is_valid(int fd)
 {
     char    BUF[21];
     int     ret;
@@ -94,10 +36,11 @@ int     is_valid(int fd)
         if (i == 0)
             list = ft_lstnew(BUF, 21);
         else
-            ft_lstadd(&list, ft_lstnew(BUF, 21));
+			lstaddend(list, ft_lstnew(BUF, 21));
         ret = read(fd, BUF, 1);
         if (ret != 0 && BUF[0] != '\n')
             return (0);
+		i++;
     }
 	return (is_valid_figure(list));
 }
@@ -105,20 +48,24 @@ int     is_valid(int fd)
 int     main(int argc, char **argv)
 {
     int     fd;
+	t_list	*list;
 
     if (argc == 2)
     {
         fd = open(argv[1], O_RDONLY);
-        if (is_valid(fd))
+		list = is_valid(fd);
+        if (list)
         {
-            write(1, "correct\n", 8);
+            while (list != NULL)
+			{
+				printf("%llu\n", *((unsigned long long *)list->content));
+				list = list->next;
+			}
         }
         else
             write(1, "error\n", 6);
     }
     else
-    {
-        
-    }
+        print_usage();
     return (0);
 }

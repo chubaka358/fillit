@@ -6,7 +6,12 @@
 # include <fcntl.h>
 # include <sys/types.h>
 # include <sys/uio.h>
+# define S ((char*)list->content)
+# define I ((unsigned long long)list->content)
 
-int		is_obs(char c1, char c2, char c3);
+t_list		*is_valid_figure(t_list *list);
+int			is_buf_valid(char *BUF);
+void		solve(t_list *list);
+void		lstaddend(t_list *alst, t_list *new);
 
 #endif
