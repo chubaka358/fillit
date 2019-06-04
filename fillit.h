@@ -8,6 +8,7 @@
 # include <sys/uio.h>
 # define S ((char*)list->content)
 # define I ((unsigned long long)list->content)
+# include "stdio.h"
 
 t_list		*is_valid_figure(t_list *list);
 int			is_buf_valid(char *BUF);

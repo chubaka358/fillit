@@ -1,7 +1,7 @@
 CC=gcc
 CFLAGS=-g -Wall -Wextra -Werror
 DEPS=fillit.h
-OBJ=fillit.o valid.o list.o
+OBJ=fillit.o valid.o list.o solve.o
 
 all: $(OBJ) fillit
 

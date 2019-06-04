@@ -6,7 +6,7 @@
 /*   By: bshara <bshara@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/16 21:39:04 by bshara            #+#    #+#             */
-/*   Updated: 2019/06/03 22:04:44 by bshara           ###   ########.fr       */
+/*   Updated: 2019/06/04 15:02:08 by bshara           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,11 +56,6 @@ int     main(int argc, char **argv)
 		list = is_valid(fd);
         if (list)
         {
-            while (list != NULL)
-			{
-				printf("%llu\n", *((unsigned long long *)list->content));
-				list = list->next;
-			}
 			solve(list);
         }
         else
