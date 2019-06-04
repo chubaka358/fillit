@@ -17,25 +17,25 @@ void	ull_to_void(t_list *list, unsigned long long i)
 
 int		is_valid_figure2(t_list *list, int i)
 {
-	if ((i + 10 < 20) && is_obs(S[i + 1], S[i + 5], S[i + 10]))
+	if ((i + 10 < 19) && is_obs(S[i + 1], S[i + 5], S[i + 10]))
 		ull_to_void(list, 51328);
-	else if ((i + 5 < 20) && is_obs(S[i + 3], S[i + 4], S[i + 5]))
+	else if ((i + 5 < 19) && is_obs(S[i + 3], S[i + 4], S[i + 5]))
 		ull_to_void(list, 11776);
-	else if ((i + 11 < 20) && is_obs(S[i + 1], S[i + 6], S[i + 11]))
+	else if ((i + 11 < 19) && is_obs(S[i + 1], S[i + 6], S[i + 11]))
 		ull_to_void(list, 50240);
-	else if ((i + 5 < 20) && is_obs(S[i + 1], S[i + 2], S[i + 5]))
+	else if ((i + 5 < 19) && is_obs(S[i + 1], S[i + 2], S[i + 5]))
 		ull_to_void(list, 59392);
-	else if ((i + 11 < 20) && is_obs(S[i + 5], S[i + 10], S[i + 11]))
+	else if ((i + 11 < 19) && is_obs(S[i + 5], S[i + 10], S[i + 11]))
 		ull_to_void(list, 35008);
-	else if ((i + 6 < 20) && is_obs(S[i + 1], S[i + 5], S[i + 6]))
+	else if ((i + 6 < 19) && is_obs(S[i + 1], S[i + 5], S[i + 6]))
 		ull_to_void(list, 52224);
-	else if ((i + 5 < 20) && is_obs(S[i + 1], S[i + 4], S[i + 5]))
+	else if ((i + 5 < 19) && is_obs(S[i + 1], S[i + 4], S[i + 5]))
 		ull_to_void(list, 27648);
-	else if ((i + 11 < 20) && is_obs(S[i + 5], S[i + 6], S[i + 11]))
+	else if ((i + 11 < 19) && is_obs(S[i + 5], S[i + 6], S[i + 11]))
 		ull_to_void(list, 35904);
-	else if ((i + 7 < 20) && is_obs(S[i + 1], S[i + 6], S[i + 7]))
+	else if ((i + 7 < 19) && is_obs(S[i + 1], S[i + 6], S[i + 7]))
 		ull_to_void(list, 50688);
-	else if ((i + 9 < 20) && is_obs(S[i + 4], S[i + 5], S[i + 9]))
+	else if ((i + 9 < 19) && is_obs(S[i + 4], S[i + 5], S[i + 9]))
 		ull_to_void(list, 19584);
 	else
 		return (0);
@@ -53,15 +53,15 @@ t_list     *is_valid_figure(t_list *list)
 		i = 0;
 		while (S[i] != '#')
 			i++;
-		if ((i + 15 < 20) && is_obs(S[i + 5], S[i + 10], S[i + 15]))
+		if ((i + 15 < 19) && is_obs(S[i + 5], S[i + 10], S[i + 15]))
 			ull_to_void(list, 34952);
-		else if ((i + 3 < 20) && is_obs(S[i + 1], S[i + 2], S[i + 3]))
+		else if ((i + 3 < 19) && is_obs(S[i + 1], S[i + 2], S[i + 3]))
 			ull_to_void(list, 61440);
-		else if ((i + 7 < 20) && is_obs(S[i + 5], S[i + 6], S[i + 7]))
+		else if ((i + 7 < 19) && is_obs(S[i + 5], S[i + 6], S[i + 7]))
 			ull_to_void(list, 36352);
-		else if ((i + 10 < 20) && is_obs(S[i + 5], S[i + 9], S[i + 10]))
+		else if ((i + 10 < 19) && is_obs(S[i + 5], S[i + 9], S[i + 10]))
 			ull_to_void(list, 17600);
-		else if ((i + 7 < 20) && is_obs(S[i + 1], S[i + 2], S[i + 7]))
+		else if ((i + 7 < 19) && is_obs(S[i + 1], S[i + 2], S[i + 7]))
 			ull_to_void(list, 57856);
 		else if (!is_valid_figure2(list, i))
 			return (NULL);

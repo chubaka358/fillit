@@ -6,7 +6,7 @@
 /*   By: bshara <bshara@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/16 21:39:04 by bshara            #+#    #+#             */
-/*   Updated: 2019/06/03 21:39:35 by bshara           ###   ########.fr       */
+/*   Updated: 2019/06/03 22:04:44 by bshara           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ int     main(int argc, char **argv)
 				printf("%llu\n", *((unsigned long long *)list->content));
 				list = list->next;
 			}
+			solve(list);
         }
         else
             write(1, "error\n", 6);
