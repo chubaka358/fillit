@@ -2,7 +2,7 @@
 
 void	solve(t_list *list)
 {
-	int	border;
+	int	 border;
 
 	border = 2;
 }
