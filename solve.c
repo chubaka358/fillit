@@ -1,12 +1,24 @@
 #include "fillit.h"
 
-char	*solve_help(t_list *list, unsigned long long size)
+void	place_figure(t_list *list, t_map *map, int shift)
 {
-	int		is_solved;
+	map->chart &= *((unsigned long long *)list->content);
+	if (map->chart != 0)
+	{
+		map->chart = 0;
+		shift++;
+	}
 
-	is_solved = 0;
-	if (is_solved == 1)
-		return ()
+}
+
+char	*solve_help(t_list *list, t_map *map)
+{
+	int shift;
+
+	shift = 0;
+	if (list == NULL)
+		return (NULL);
+	place_figure(list, map, shift);
 }
 
 int		min_border(t_list *list)
@@ -30,12 +42,13 @@ int		min_border(t_list *list)
 void	solve(t_list *list)
 {
 	int					border;
-	int					i;
 	unsigned long long	max_map;
+	t_map *map;
 
-	border = min_border(list);
-	max_map = 1;
-	i = 0;
-	max_map <<= (border*border);
+	map->border = min_border(list);
+	map->max_size = 1;
+	map->max_size <<= (map->border) * (map->border);
+	map->chart = 0;
+	solve_help(list, map);
 	printf("%llu", max_map);
 }
