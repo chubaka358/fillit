@@ -7,5 +7,6 @@ void	lstaddend(t_list *alst, t_list *new)
 		while (alst->next != NULL)
 			alst = alst->next;
 		alst->next = new;
+		new->prev = alst;
 	}
 }
