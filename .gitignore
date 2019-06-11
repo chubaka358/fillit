@@ -2,3 +2,8 @@
 README.md
 LICENSE
 fillit.dSYM
+.DS_Store
+.idea/
+CMakeLists.txt
+cmake-build-debug/
+libft/mains/
