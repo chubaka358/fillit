@@ -2,6 +2,7 @@
 
 int	is_obs(char c1, char c2, char c3)
 {
+	
 	if ((c1 == '#') && (c2 == '#') && (c3 == '#'))
 		return (1);
 	return (0);
@@ -12,9 +13,9 @@ void	ull_to_void(t_list *list, t_fig *fig, size_t len, size_t rem)
 	free(list->content);
 	list->content = NULL;
 	list->content = malloc(sizeof(t_fig));
-	ft_memcpy(list->content, fig, sizeof(t_fig*));
+	ft_memcpy(list->content, fig, sizeof(t_fig));
 	list->content_size = len;
-	list->rem = rem;
+	list->rem = rem;	
 }
 
 int		is_valid_figure2(t_list *list, int i)

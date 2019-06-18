@@ -6,7 +6,7 @@
 /*   By: bshara <bshara@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/16 21:39:04 by bshara            #+#    #+#             */
-/*   Updated: 2019/06/11 15:53:45 by cmeowth          ###   ########.fr       */
+/*   Updated: 2019/06/18 12:48:44 by bshara           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,11 +50,9 @@ int     main(int argc, char **argv)
     int     fd;
 	t_list	*list;
 
-	argv = NULL;
-    if (argc == 1)
+    if (argc == 2)
 	{
-        //fd = open(argv[1], O_RDONLY);
-		fd = open("/Users/cmeowth/42/fillit/fillit/1.txt", O_RDONLY);
+        fd = open(argv[1], O_RDONLY);
 		list = is_valid(fd);
         if (list)
         {
