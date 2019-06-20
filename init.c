@@ -31,17 +31,23 @@ unsigned long long	init_llu(t_fig	*fig, unsigned long long border)
 	unsigned long long tmp3;
 	unsigned long long tmp4;
 
-	if (border == 3)
 	tmp1 = (fig->str1) << border * 3;
 	tmp2 = (fig->str2) << border * 2;
 	tmp3 = (fig->str3) << border;
 	tmp4 = fig->str4;
-	if (border < 4)
+	if (border == 3)
 	{
-		tmp1 = tmp1 >> (4 - border);
-		tmp2 = tmp2 >> (4 - border);
-		tmp3 = tmp3 >> (4 - border);
-		tmp4 = tmp4 >> (4 - border);
+		tmp1 = tmp1 >> 1;
+		tmp2 = tmp2 >> 1;
+		tmp3 = tmp3 >> 1;
+		tmp4 = -1;
+	}
+	else if (border == 2)
+	{
+		tmp1 = tmp1 >> 2;
+		tmp2 = tmp2 >> 2;
+		tmp3 = -1;
+		tmp4 = -1;
 	}
 	return (tetramine_formation(tmp1, tmp2, tmp3, tmp4));
 }
