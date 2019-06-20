@@ -6,7 +6,7 @@
 /*   By: bshara <bshara@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/04 19:16:57 by bshara            #+#    #+#             */
-/*   Updated: 2019/06/06 13:49:19 by bshara           ###   ########.fr       */
+/*   Updated: 2019/06/20 16:22:29 by bshara           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,11 @@
 
 typedef struct		s_list
 {
-	void			*content;
-	size_t			content_size;
-	size_t			rem;
-	struct s_list	*next;
-	struct s_list	*prev;
+	void				*content;
+	size_t				content_size;
+	unsigned long long	rem;
+	struct s_list		*next;
+	struct s_list		*prev;
 }					t_list;
 
 void				*ft_memset(void *b, int c, size_t len);
@@ -101,5 +101,6 @@ int					ft_square(int a);
 ssize_t				ft_lenuntil(char *s, char c);
 char				*ft_cpyuntil(char *s, char c);
 int					get_next_line(const int fd, char **line);
+int					ft_upround(unsigned long long a, unsigned long long b);
 
 #endif

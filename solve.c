@@ -1,26 +1,28 @@
 #include "fillit.h"
 
-int stack[128];
+t_data *stack[128];
 int tos = 0;
 static t_list *src;
 
-void push(int i)
+void push(int i, t_map *map)
 {
-	stack[tos] = i;
+	stack[tos]->shift = i;
+	stack[tos]->map = map;
 	tos++;
 }
 
-int	pop(void)
+t_data	*pop(void)
 {
 	tos--;
 	if (tos < 0)
-		return (-1);
+		return (NULL);
 	return(stack[tos]);
 }
 
 int	place_figure(t_list *list, unsigned long long figure, t_map *map, int shift)
 {
-	unsigned long long tmp_map;
+	unsigned long long	tmp_map;
+	t_data				*data;
 
 	figure >>= shift;
 	tmp_map = map->chart;
@@ -32,26 +34,27 @@ int	place_figure(t_list *list, unsigned long long figure, t_map *map, int shift)
 	}
 	if (tmp_map != 0)
 	{
-		if (((shift + list->content_size - 1) % map->border == map->border - 1) && \
-		(shift + list->content_size + list->rem < map->border * map->border))
-			shift += list->content_size;
-		else if (shift + 1 + list->rem < map->border * map->border)
-			shift++;
-		else
+		shift = calc_shift(shift, list, map);
+		if (shift == -1)
 		{
 			list = list->prev;
-			place_figure(list, *((unsigned long long *)list->content), map, pop());
+			data = pop();
+			shift = calc_shift(data->shift, list, data->map);
+			place_figure(list, *((unsigned long long *)list->content), data->map, data->shift);
 		}
-		place_figure(list, figure, map, shift);
+		place_figure(list, *((unsigned long long *)list->content), map, shift);
 	}
 	else
 	{
+		push(shift, map);
 		map->chart |= figure;
-		if (map->chart > map->max_size)
+		if (map->chart >= map->max_size)
+		{
+			pop();
 			return (-1);
+		}
 		map_str(map, figure);
 		list = list->next;
-		push(shift);
 		if (list == NULL)
 			return (0);
 		place_figure(list, *((unsigned long long *)list->content), map, 0);
@@ -75,11 +78,14 @@ void	solve_help(t_list *list, t_map *map)
 
 int		min_border(t_list *list)
 {
-	int		i;
-	int		size;
+	unsigned long	i;
+	unsigned long	size;
+	unsigned long	width;
+	t_list			*iter;
 
 	i = 0;
 	size = 2;
+	iter = list;
 	while (list != NULL)
 	{
 		i++;
@@ -88,6 +94,15 @@ int		min_border(t_list *list)
 	i *= 4;
 	while (size * size < i)
 		size++;
+	while (iter != NULL)
+	{
+		width = (iter->rem / 4) + 1;
+		if (size < iter->content_size)
+			size = iter->content_size;
+		if (size < width)
+			size = width;
+		iter = iter->next;
+	}
 	return (size);
 }
 

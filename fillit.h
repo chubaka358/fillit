@@ -28,6 +28,12 @@ typedef struct	s_map
 	char				letter;
 }				t_map;
 
+typedef struct s_data
+{
+	t_map	*map;
+	int		shift;
+}				t_data;
+
 t_list		*is_valid_figure(t_list *list);
 int			is_buf_valid(char *BUF);
 void		solve(t_list *list);
@@ -37,5 +43,7 @@ void		map_str(t_map *map, unsigned long long figure);
 t_list		*to_start(t_list *list);
 t_list		*list_init(t_list *list, t_map *map);
 t_fig		*fig_init(unsigned long long s1, unsigned long long s2, unsigned long long s3, unsigned long long s4);
+t_list		*change_list(t_list *list, unsigned long long *addr, size_t size);
+int			calc_shift(int shift, t_list *list, t_map *map);
 
 #endif

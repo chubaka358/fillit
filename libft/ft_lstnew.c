@@ -6,7 +6,7 @@
 /*   By: bshara <bshara@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/17 18:35:20 by bshara            #+#    #+#             */
-/*   Updated: 2019/06/06 21:37:25 by bshara           ###   ########.fr       */
+/*   Updated: 2019/06/20 16:41:30 by bshara           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ t_list	*ft_lstnew(void const *content, size_t content_size)
 			return (NULL);
 		}
 		list->content = ft_memcpy(list->content, content, content_size);
-		list->content_size = content_size;
+		//list->content_size = content_size;
 	}
 	list->next = NULL;
 	list->prev = NULL;

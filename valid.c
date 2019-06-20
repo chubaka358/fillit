@@ -57,7 +57,7 @@ t_list     *is_valid_figure(t_list *list)
 		while (S[i] != '#')
 			i++;
 		if ((i + 15 < 19) && is_obs(S[i + 5], S[i + 10], S[i + 15]))
-			ull_to_void(list, fig_init(8, 8, 8, 8), 0, 12);
+			ull_to_void(list, fig_init(8, 8, 8, 8), 1, 12);
 		else if ((i + 3 < 19) && is_obs(S[i + 1], S[i + 2], S[i + 3]))
 			ull_to_void(list, fig_init(15, 0, 0, 0), 4, 3);
 		else if ((i + 7 < 19) && is_obs(S[i + 5], S[i + 6], S[i + 7]))
