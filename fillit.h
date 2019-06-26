@@ -45,5 +45,6 @@ t_list		*list_init(t_list *list, t_map *map);
 t_fig		*fig_init(unsigned long long s1, unsigned long long s2, unsigned long long s3, unsigned long long s4);
 t_list		*change_list(t_list *list, unsigned long long *addr, size_t size);
 int			calc_shift(int shift, t_list *list, t_map *map);
+t_map		*copy_map(t_map **map);
 
 #endif

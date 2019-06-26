@@ -6,8 +6,9 @@ static t_list *src;
 
 void push(int i, t_map *map)
 {
-	stack[tos]->shift = i;
-	stack[tos]->map = map;
+	stack[tos] = malloc(sizeof(t_map));
+	(stack[tos])->shift = i;
+	(stack[tos])->map = map;
 	tos++;
 }
 
@@ -24,6 +25,7 @@ int	place_figure(t_list *list, unsigned long long figure, t_map *map, int shift)
 	unsigned long long	tmp_map;
 	t_data				*data;
 
+	push(shift, copy_map(&map));
 	figure >>= shift;
 	tmp_map = map->chart;
 	tmp_map &= figure;
@@ -38,15 +40,16 @@ int	place_figure(t_list *list, unsigned long long figure, t_map *map, int shift)
 		if (shift == -1)
 		{
 			list = list->prev;
+			pop();
 			data = pop();
 			shift = calc_shift(data->shift, list, data->map);
 			place_figure(list, *((unsigned long long *)list->content), data->map, data->shift);
 		}
+		pop();
 		place_figure(list, *((unsigned long long *)list->content), map, shift);
 	}
 	else
 	{
-		push(shift, map);
 		map->chart |= figure;
 		if (map->chart >= map->max_size)
 		{
