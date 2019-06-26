@@ -43,10 +43,13 @@ int	place_figure(t_list *list, unsigned long long figure, t_map *map, int shift)
 			pop();
 			data = pop();
 			shift = calc_shift(data->shift, list, data->map);
-			place_figure(list, *((unsigned long long *)list->content), data->map, data->shift);
+			place_figure(list, *((unsigned long long *)list->content), data->map, shift);
 		}
-		pop();
-		place_figure(list, *((unsigned long long *)list->content), map, shift);
+		else
+		{
+			pop();
+			place_figure(list, *((unsigned long long *)list->content), map, shift);
+		}
 	}
 	else
 	{
@@ -56,11 +59,15 @@ int	place_figure(t_list *list, unsigned long long figure, t_map *map, int shift)
 			pop();
 			return (-1);
 		}
-		map_str(map, figure);
-		list = list->next;
-		if (list == NULL)
-			return (0);
-		place_figure(list, *((unsigned long long *)list->content), map, 0);
+		else
+		{
+			map_str(map, figure);
+			list = list->next;
+			if (list == NULL)
+				return (0);
+			else
+				place_figure(list, *((unsigned long long *)list->content), map, 0);
+		}
 	}
 	return (1);
 }
